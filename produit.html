@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche produit - Lardesports Martinique</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --badge-color: #e0f2fe;
+            --light-bg: #f8fafc;
+            --dark-text: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--dark-text); line-height: 1.6; }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+        .back-link { color: var(--accent-color); font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+        .detail-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 1.5rem;
+        }
+        .detail-card img {
+            width: 100%;
+            max-height: 360px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #e2e8f0;
+        }
+        .brand { color: var(--accent-color); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
+        .specs { color: #64748b; margin: 0.5rem 0 1rem; }
+        .price { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); margin-top: 1rem; }
+        .old-price { text-decoration: line-through; color: #9ca3af; font-size: 0.9em; margin-right: 6px; }
+        .discount-tag {
+            background-color: #dc2626;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 760px) {
+            .detail-card { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lardesports Martinique</h1>
+        <p>Fiche produit</p>
+    </header>
+    <div class="container" id="productDetail">
+        <p>Chargement...</p>
+    </div>
+    <footer>
+        <p>&copy; 2026 Lardesports Martinique — Téléphone : 06 96 89 19 83</p>
+    </footer>
+    <script src="js/product.js"></script>
+</body>
+</html>

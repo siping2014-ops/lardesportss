@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raquettes par Marque - Lardesports Martinique</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --badge-color: #e0f2fe;
+            --light-bg: #f8fafc;
+            --dark-text: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+        }
+
+        .back-nav {
+            background-color: white;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .back-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Conteneur */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Marque */
+        .brand-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .brand-badge {
+            background-color: var(--badge-color);
+            color: var(--accent-color);
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Grille de raquettes */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            background: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            background-color: #f1f5f9;
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.4rem;
+        }
+
+        .card .specs {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.8rem;
+        }
+
+        .card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+	.old-price {
+ 	 text-decoration: line-through;
+ 	 color: #9ca3af;
+ 	 font-size: 0.9em;
+ 	 margin-right: 6px;
+	}
+
+        .discount-tag {
+ 	 background-color: #dc2626;
+ 	 color: #ffffff;
+ 	 font-size: 0.8rem;
+  	font-weight: bold;
+  	padding: 2px 6px;
+ 	 border-radius: 4px;
+ 	 margin-right: 6px;
+ 	 vertical-align: middle;
+	}
+
+        .btn-detail {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.45rem 0.9rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .empty-catalog {
+            text-align: center;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nos Raquettes par Marque</h1>
+        <p>Lardesports Martinique — Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
+    </header>
+
+    <div class="back-nav">
+        <div class="back-container">
+            <a href="index.html" class="back-link">← Retour au catalogue principal</a>
+        </div>
+    </div>
+
+    <div class="container" id="catalogRoot" data-category="raquettes" data-layout="brands"></div>
+
+    <footer>
+        <p>&copy; 2026 Lardesports Martinique — Téléphone : 06 96 89 19 83 — Email : magasinmartinique@lardesports.com</p>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+</body>
+</html>

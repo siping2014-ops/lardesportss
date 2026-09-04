@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lardesports Martinique - Spécialiste 100% Badminton</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --badge-color: #e0f2fe;
+            --light-bg: #f8fafc;
+            --dark-text: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+        }
+
+        /* Navigation / Filtres */
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .filter-btn {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Grille de produits */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-card a.img-link {
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #cbd5e1;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card a.img-link:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            background-color: var(--badge-color);
+            color: var(--accent-color);
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            width: fit-content;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .product-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        .product-title a:hover {
+            color: var(--accent-color);
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn-detail {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-detail:hover {
+            background-color: #0369a1;
+        }
+
+        /* Services & Cordage */
+        .service-banner {
+            background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .service-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Infos magasin */
+        .store-info {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: var(--card-shadow);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-block h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .info-block a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lardesports Martinique</h1>
+        <p>Votre spécialiste 100% Badminton en Martinique — Raquettes, Volants, Cordages & Équipements</p>
+    </header>
+
+    <nav>
+        <button class="filter-btn active" onclick="filterProducts('all')">Tout l'univers Badminton</button>
+        <button class="filter-btn" onclick="filterProducts('raquettes')">Raquettes</button>
+        <button class="filter-btn" onclick="filterProducts('chaussures')">Chaussures</button>
+        <button class="filter-btn" onclick="filterProducts('volants')">Volants</button>
+	<button class="filter-btn" onclick="filterProducts('cordes')">Cordages</button>
+	<button class="filter-btn" onclick="filterProducts('vetements')">Vêtements</button>
+        <button class="filter-btn" onclick="filterProducts('sacs')">Sacs</button>
+        <button class="filter-btn" onclick="filterProducts('cordages')">Accesoires</button>
+        <button class="filter-btn" onclick="filterProducts('textile')">Autres Sports</button>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">Catalogue Produits Badminton</h2>
+
+        <div class="product-grid" id="productGrid">
+            
+            <div class="product-card" data-category="raquettes">
+                <a href="raquettes.html" class="img-link" title="Voir les raquettes par marque">
+                    <img src="photo/raquettes.jpeg" alt="Gamme Raquettes Badminton" class="product-img">
+                </a>
+                <div class="product-info">
+                    <span class="product-category">Raquettes</span>
+                    <h3 class="product-title">
+                        <a href="raquettes.html">Gamme Raquettes par Marque</a>
+                    </h3>
+                    <p class="product-description">Découvrez notre sélection complète par marque : Yonex, Babolat, Victor, Maxbolt, Li-ning, RSL...</p>
+                    <a href="raquettes.html" class="btn-detail">Voir les marques →</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="chaussures">
+                <a href="chaussures.html" class="img-link" title="Voir les chaussures par marque">
+                    <img src="photo/chaussures.jpeg" alt="Raquette badminton polyvalente" class="product-img">
+                </a>
+                <div class="product-info">
+                    <span class="product-category">Chaussures</span>
+                    <h3 class="product-title">
+                        <a href="chaussures.html">Chaussures spéciales pour badminton</a>
+                    </h3>
+                    <p class="product-description">Découvrez notre sélection complète par marque : Yonex, Babolat, Victor, Oliver...</p>
+                    <span class="product-price">À partir de 79,00 €</span>
+                    <a href="chaussures.html" class="btn-detail">Voir les marques →</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="volants">
+ 		<a href="volants.html" class="img-link" title="Voir les volants par marque">
+                <img src="photo/volants.jpeg" alt="Volants de badminton plumes" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">Volants</span>
+                    <h3 class="product-title">Tube Volants Plumes Compétition (x12)</h3>
+			 <a href="volants.html">
+                    </h3>
+                    <p class="product-description">Maniabilité extrême et tige flexible, idéale pour le jeu rapide en double et la défense.</p>
+                    <span class="product-price">79,00 €</span>
+                    <a href="volants.html" class="btn-detail">Voir la fiche →</a>
+                </div>
+
+            </div>
+
+            <div class="product-card" data-category="cordes">
+		<a href="cordages.html" class="img-link" title="Voir les cordages par marque">
+                <img src="photo/cordages.jpeg" alt="Volants plastique badminton" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">cordages</span>
+                    <h3 class="product-title">Différentes marques de cordages</h3>
+                    <p class="product-description">Grande résistance à l'usure, idéal pour entraînements et clubs.</p>
+                    <span class="product-price">14,90 €</span>
+		 <a href="cordages.html" class="btn-detail">Voir la fiche →</a>
+
+                </div>
+            </div>
+
+            <div class="product-card" data-category="vetements">
+		<a href="vetements.html" class="img-link" title="Voir les vêtements par marque">
+                <img src="photo/vetements.jpeg" alt="Chaussures Badminton Indoor" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">Vêtement de différentes marques</span>
+                    <h3 class="product-title">Nombreux marques et tailles différentes</h3>
+                    <p class="product-description">Semelle gomme non marquante, maintien de cheville renforcé pour déplacements latéraux.</p>
+                    <span class="product-price">105,00 €</span>
+ 		<a href="vetements.html" class="btn-detail">Voir les marques →</a>
+
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sacs">
+		<a href="sacs.html" class="img-link" title="Voir les sacs par marque">
+                <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=500" alt="Thermobag Badminton" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">Sacs & Thermobags</span>
+                    <h3 class="product-title">Thermobag 6 à 9 Raquettes</h3>
+                    <p class="product-description">Compartiment isotherme pour préserver la tension du cordage et poche chaussures séparée.</p>
+                    <span class="product-price">69,90 €</span>
+		<a href="sacs.html" class="btn-detail">Voir les marques →</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="cordages">
+		<a href="accesoires.html" class="img-link" title="Voir les sacs par marque">
+                <img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?w=500" alt="Grips et Surgrips Badminton" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">accesoires</span>
+                    <h3 class="product-title">Pack Surgrips Absorbants (x3)</h3>
+                    <p class="product-description">Toucher collant et très forte absorption de la transpiration pour un maintien parfait.</p>
+                    <span class="product-price">8,50 €</span>
+		<a href="accesoires.html" class="btn-detail">Voir les marques →</a>
+
+                </div>
+            </div>
+
+            <div class="product-card" data-category="textile">
+		<a href="autres-sports.html" class="img-link" title="Voir les sacs par marque">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Maillot Badminton" class="product-img">
+                <div class="product-info">
+                    <span class="product-category">Autres sports</span>
+                    <h3 class="product-title">Maillot Respirant Dry-Fit</h3>
+                    <p class="product-description">Tissu léger à séchage rapide, coupe ergonomique adaptée à la pratique du badminton.</p>
+                    <span class="product-price">32,00 €</span>
+		<a href="autres-sports.html" class="btn-detail">Voir les marques →</a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="service-banner">
+            <h3>🏸 Service Pose & Recordage Express en Magasin</h3>
+            <p>Confiez-nous vos raquettes ! Nous réalisons le recordage sur mesure selon la tension de votre choix (Jauge fine / forte durabilité).</p>
+        </div>
+
+        <div class="store-info">
+            <div class="info-block">
+                <h3>📍 Contact & Boutique</h3>
+                <p><strong>Magasin :</strong> Lardesports Martinique</p>
+                <p><strong>Adresse :</strong> Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
+                <p><strong>Téléphone :</strong> <a href="tel:0696891983">06 96 89 19 83</a></p>
+                <p><strong>Email :</strong> <a href="mailto:magasinmartinique@lardesports.com">magasinmartinique@lardesports.com</a></p>
+            </div>
+            <div class="info-block">
+                <h3>🕒 Horaires d'Ouverture</h3>
+                <p><strong>Mardi - Vendredi :</strong> 13h30 - 18h30</p>
+                <p><strong>Samedi :</strong> 10h00 - 18h00</p>
+                <p><strong>Dimanche :</strong> 10h00 - 13h00</p>
+                <p><strong>Lundi :</strong> Fermé</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique — <a href="admin.html" style="color:#7dd3fc;">Gestion catalogue</a></p>
+    </footer>
+
+    <script>
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

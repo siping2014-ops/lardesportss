@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacs de Badminton - Lardesports Martinique</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #1b2a4a;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #0f172a;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #2563eb;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #1b2a4a;
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .product-card p.description {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 15px;
+    }
+
+    .product-card .price {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #2563eb;
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .buy-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    footer {
+      background-color: #1b2a4a;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lardesports Martinique</h1>
+    <p>Votre spécialiste badminton à Schoelcher</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="raquettes.html">Raquettes</a>
+    <a href="volants.html">Volants</a>
+    <a href="chaussures.html">Chaussures</a>
+    <a href="cordages.html">Cordages</a>
+    <a href="vetements.html">Vêtements</a>
+    <a href="sacs.html" class="active">Sacs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main class="container">
+    <h2>Nos Sacs de Badminton</h2>
+
+    <section class="product-grid" data-category="sacs"></section>
+  </main>
+
+  <footer>
+    <p>Lardesports Martinique - Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
+    <p>Téléphone : 06 96 89 19 83 | Email : magasinmartinique@lardesports.com</p>
+  </footer>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

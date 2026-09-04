@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品管理 - Lardesports</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --light-bg: #f8fafc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: var(--light-bg); color: #1f2937; }
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a { color: #7dd3fc; text-decoration: none; }
+        .wrap { max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem; }
+        .panel {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,.08);
+            margin-bottom: 1.5rem;
+        }
+        label { display: block; font-weight: 600; margin: 0.8rem 0 0.3rem; }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        button, .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        button[data-delete], #logoutBtn { background: #dc2626; }
+        .status { margin: 1rem 0; min-height: 1.4rem; color: #0369a1; }
+        .status.error { color: #b91c1c; }
+        .admin-card {
+            display: grid;
+            grid-template-columns: 96px 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .admin-card img { width: 96px; height: 72px; object-fit: cover; border-radius: 6px; background: #e2e8f0; }
+        @media (max-width: 700px) {
+            .row, .admin-card { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>商品管理后台</h1>
+        <a href="index.html">返回网站首页</a>
+    </header>
+    <div class="wrap">
+        <p id="status" class="status"></p>
+
+        <section class="panel" id="loginPanel">
+            <h2>管理员登录</h2>
+            <p>默认密码：<code>admin123</code>（可用环境变量 ADMIN_PASSWORD 修改）</p>
+            <form id="loginForm">
+                <label for="password">密码</label>
+                <input id="password" name="password" type="password" required>
+                <button type="submit">登录</button>
+            </form>
+        </section>
+
+        <section id="adminPanel" hidden>
+            <div class="panel">
+                <h2>添加商品</h2>
+                <form id="createForm">
+                    <div class="row">
+                        <div>
+                            <label>分类</label>
+                            <select name="category" required>
+                                <option value="raquettes">Raquettes 球拍</option>
+                                <option value="chaussures">Chaussures 球鞋</option>
+                                <option value="volants">Volants 羽毛球</option>
+                                <option value="cordages">Cordages 球线</option>
+                                <option value="vetements">Vêtements 服装</option>
+                                <option value="sacs">Sacs 球包</option>
+                                <option value="accessoires">Accessoires 配件</option>
+                                <option value="autres-sports">Autres Sports 其他运动</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>品牌</label>
+                            <input name="brand" placeholder="Yonex, Victor...">
+                        </div>
+                    </div>
+                    <label>商品名称</label>
+                    <input name="name" required>
+                    <label>规格 / 简述</label>
+                    <input name="specs" placeholder="Neutre — Semi-Rigide (4U)">
+                    <label>详细介绍</label>
+                    <textarea name="description" rows="3"></textarea>
+                    <div class="row">
+                        <div>
+                            <label>现价 (€)</label>
+                            <input name="price" type="number" step="0.01" min="0" required>
+                        </div>
+                        <div>
+                            <label>原价 (€，可选)</label>
+                            <input name="oldPrice" type="number" step="0.01" min="0">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <label>折扣 %（可选）</label>
+                            <input name="discount" type="number" step="1" min="0" max="100">
+                        </div>
+                        <div>
+                            <label>图片</label>
+                            <input name="image" type="file" accept="image/*">
+                        </div>
+                    </div>
+                    <label>或填写已有图片路径 / 网址</label>
+                    <input name="imageUrl" id="imageUrl" placeholder="photo/raquettes/xxx.jpeg">
+                    <button type="submit">添加商品</button>
+                </form>
+            </div>
+
+            <div class="panel">
+                <h2>现有商品</h2>
+                <label>按分类筛选</label>
+                <select id="filterCategory">
+                    <option value="">全部</option>
+                </select>
+                <button type="button" id="logoutBtn">退出登录</button>
+                <div id="productList"></div>
+            </div>
+        </section>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>
